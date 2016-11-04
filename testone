@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>document</title>
+	<meta charset="UTF-8">
+</head>
+<body>
+	cookie
+	<script>
+		document.cookie = 'name=zhangsan';//键值对
+		document.cookie = 'age=18';
+		document.cookie = 'sex=nan';
+		console.log(document.cookie);
+		////////增函数
+		function addCookie(key, value, expire){
+			var str = key + '=' + escape(value) + '; ';//编码
+			var date = new Date();
+			date.setTime(date.getTime() + expire * 24 * 3600 * 1000);
+			str += 'expires=' + date.toUTCString();
+			document.cookie = str;
+		}
+		addCookie('school','heida',2);
+		///////////获取函数
+		function getCookie(key){
+			var arrStr = document.cookie.split('; ');
+			for(var i=0; i<arrStr.length; i++){
+				var temp = arrStr[i].split('=');
+				if(temp[0] == key){
+					return unescape(temp[1]);//解码
+				}
+			}
+		}
+		console.log(getCookie('name'));
+		/////////////删除
+		function delCookie(key){
+			var date = new Date();
+			date.setTime(date.getTime() - 10000000000000);
+			document.cookie = key + '=aa; expires=' + date.toUTCString();
+		}
+		addCookie('name','zhangsan',2);
+		addCookie('age','18',2);
+		addCookie('age', '100-8', -1)
+		console.log(document.cookie);
+		delCookie('age');		
+	</script>
+</body>
+</html>
