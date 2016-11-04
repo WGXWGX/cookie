@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>document</title>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<form action="">
+		用户名: <input >0</input>
+	</form>
+	<script src="jquery-1.12.4.js"></script>
+	<script src="jquery.cookie.js"></script>
+	<script>
+		$(function(){
+			$.cookie('name','abd',{expires: 2});
+			console.log($.cookie('name'));
+			$.cookie('name', {expires: -1});
+		});
+	</script>
+</body>
+</html>
